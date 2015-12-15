@@ -8,7 +8,7 @@
     "content_scripts": [
         {
             "matches": ["http://*/*","https://*/*"],
-            "js": ["background.js"]
+            "js": ["jquery.min.js","background.js"]
         }
     ]
 }
