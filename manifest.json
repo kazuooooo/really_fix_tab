@@ -1,0 +1,14 @@
+{
+    "name": "Really Fix Tab",
+    "version": "0.1",
+    "manifest_version": 2,
+
+    "description": "Never Jump Other Page On FixedTab",
+
+    "content_scripts": [
+        {
+            "matches": ["http://*/*","https://*/*"],
+            "js": ["background.js"]
+        }
+    ]
+}
