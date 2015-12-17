@@ -1,18 +1,21 @@
-$(function(){
-  //リンクがクリックされた
-  $('a').mousedown(function(){
-    //alert($(this).attr('href'));
-    //選択しているタブを取得
-    //タブの状態を取得（多分別スクリプト)
-    //pinned が使える　https://developer.chrome.com/extensions/tabs#type-Tab
-    checkval = isCurrentTabPinned;
-    debugger
-    //alert("this tab is pinned"+ isCurrentTabPinned.toString );
-    var isTabFixed = true;
-    if(isTabFixed){
-      //alert("A alert")
-      //タブが固定されていれば新しいタブを作って遷移
-      //createTab(url);
-    }
-  });
-});
+var url;
+// aリンクがクリックされた時
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse){
+    //requestのurlを保存
+    url = request.url;
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      //現在のタブの状態を取得
+      var isCurrentTabPinned = tabs[0].pinned;
+      if(isCurrentTabPinned){
+        alert("tab is pinned!!")
+        alert(url)
+        chrome.tabs.create({ url: url }); //リクエストを受け取って処理
+      }else{
+        alert("tab is not pinned!!")
+      }
+    });
+  }
+);
+
+

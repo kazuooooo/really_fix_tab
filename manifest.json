@@ -9,13 +9,13 @@
     ],
 
     "background": {
-    "scripts": ["tab.js"]
+        "scripts": ["background.js"]
     },
 
     "content_scripts": [
         {
             "matches": ["http://*/*","https://*/*"],
-            "js": ["jquery.min.js","background.js"]
+            "js": ["jquery.min.js","content_script.js"]
         }
     ]
 }
